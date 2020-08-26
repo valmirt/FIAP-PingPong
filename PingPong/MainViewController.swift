@@ -10,6 +10,9 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    @IBOutlet weak var textFieldPlayerOne: UITextField!
+    @IBOutlet weak var textFieldPlayerTwo: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Tela 1: viewDidLoad")
@@ -33,6 +36,13 @@ class MainViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         print("Tela 1: viewDidDisappear")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let matchViewController = segue.destination as? MatchViewController {
+            matchViewController.playerOne = textFieldPlayerOne.text ?? "Jogador 1"
+            matchViewController.playerTwo = textFieldPlayerTwo.text ?? "Jogador 2"
+        }
     }
 }
 

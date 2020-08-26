@@ -61,6 +61,10 @@
                     <navigationItem key="navigationItem" title="Ping Pong" id="d1r-jV-9xi">
                         <barButtonItem key="backBarButtonItem" title="Back" id="i54-XR-gbt"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="textFieldPlayerOne" destination="Acl-br-xp9" id="V1i-AR-DRX"/>
+                        <outlet property="textFieldPlayerTwo" destination="8RY-f7-ZZv" id="nXG-eX-9h4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -107,7 +111,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAY-Nb-bJf">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="addScorePlayerOne" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAY-Nb-bJf">
                                 <rect key="frame" x="26" y="251" width="129" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="Primary"/>
@@ -115,17 +119,23 @@
                                 <state key="normal" title="+ Ponto">
                                     <color key="titleColor" name="Secondary"/>
                                 </state>
+                                <connections>
+                                    <action selector="addScore:" destination="yrZ-YZ-to4" eventType="touchUpInside" id="wAI-HL-Dbe"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afx-tM-5xZ">
                                 <rect key="frame" x="26" y="313" width="327" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="Secondary"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <state key="normal" title="Iniciar Partida">
+                                <state key="normal" title="Terminar Partida">
                                     <color key="titleColor" name="Primary"/>
                                 </state>
+                                <connections>
+                                    <action selector="registerMatch:" destination="yrZ-YZ-to4" eventType="touchUpInside" id="aNe-Kz-XC2"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2aK-88-m8A">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="addScorePlayerTwo" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2aK-88-m8A">
                                 <rect key="frame" x="224" y="251" width="129" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="Primary"/>
@@ -133,12 +143,14 @@
                                 <state key="normal" title="+ Ponto">
                                     <color key="titleColor" name="Secondary"/>
                                 </state>
+                                <connections>
+                                    <action selector="addScore:" destination="yrZ-YZ-to4" eventType="touchUpInside" id="11J-Ry-ZJN"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kfC-Xs-fUf">
                                 <rect key="frame" x="26" y="402" width="327" height="245"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -157,6 +169,13 @@
                     <navigationItem key="navigationItem" title="Partidas" id="MZW-b0-Bun">
                         <barButtonItem key="backBarButtonItem" title="Back" id="7M0-q7-PBE"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="labelPlayerOne" destination="pdf-2h-BfX" id="HKJ-jU-Jrs"/>
+                        <outlet property="labelPlayerTwo" destination="Cnr-eT-D2U" id="kQc-8f-SNh"/>
+                        <outlet property="tfScorePlayerOne" destination="0eT-F4-WSG" id="9Di-Cb-yog"/>
+                        <outlet property="tfScorePlayerTwo" destination="g6z-eX-vRK" id="NlL-Rx-Qmj"/>
+                        <outlet property="tvAllMatches" destination="kfC-Xs-fUf" id="co2-DH-3lp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f1o-hL-7Rj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
