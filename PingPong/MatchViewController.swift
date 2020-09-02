@@ -9,6 +9,8 @@
 import UIKit
 
 class MatchViewController: UIViewController {
+    private var scorePlayerOne = 0
+    private var scorePlayerTwo = 0
     
     @IBOutlet weak var labelPlayerOne: UILabel!
     @IBOutlet weak var labelPlayerTwo: UILabel!
@@ -23,8 +25,7 @@ class MatchViewController: UIViewController {
         super.viewDidLoad()
         print("Tela 2: viewDidLoad")
         
-        labelPlayerOne.text = playerOne
-        labelPlayerTwo.text = playerTwo
+        setupPlayerNames()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,19 +48,39 @@ class MatchViewController: UIViewController {
         print("Tela 2: viewDidDisappear")
     }
     
+    private func setupPlayerNames() {
+        if playerOne.isEmpty {
+            playerOne = "Jogador 1"
+        }
+        
+        if playerTwo.isEmpty {
+            playerTwo = "Jogador 2"
+        }
+        labelPlayerOne.text = playerOne
+        labelPlayerTwo.text = playerTwo
+    }
+    
     @IBAction func addScore(_ sender: UIButton) {
         if sender.restorationIdentifier == "addScorePlayerOne" {
-            let score = tfScorePlayerOne.text
-            tfScorePlayerOne.text = String((Int(score ?? "0") ?? 0) + 1)
+            scorePlayerOne += 1
+            tfScorePlayerOne.text = String(scorePlayerOne)
         } else {
-            let score = tfScorePlayerTwo.text
-            tfScorePlayerTwo.text = String((Int(score ?? "0") ?? 0) + 1)
+            scorePlayerTwo += 1
+            tfScorePlayerTwo.text = String(scorePlayerTwo)
         }
     }
     
     @IBAction func registerMatch(_ sender: UIButton) {
-        tvAllMatches.text += "\(labelPlayerOne.text ?? playerOne) (\(tfScorePlayerOne.text ?? String(0))) x (\(tfScorePlayerTwo.text ?? String(0))) \(labelPlayerTwo.text ?? playerTwo)\n"
-        tfScorePlayerOne.text = "0"
-        tfScorePlayerTwo.text = "0"
+        tvAllMatches.text +=
+        "\(playerOne) (\(tfScorePlayerOne.text ?? String(0))) x (\(tfScorePlayerTwo.text ?? String(0))) \(playerTwo)\n"
+        
+        resetPoints()
+    }
+    
+    private func resetPoints() {
+        scorePlayerOne = 0
+        scorePlayerTwo = 0
+        tfScorePlayerOne.text = String(scorePlayerOne)
+        tfScorePlayerTwo.text = String(scorePlayerTwo)
     }
 }
